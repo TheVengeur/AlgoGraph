@@ -50,19 +50,6 @@ def is_eurelian(graph):
     return False
 
 
-print(is_eurelian(G))
-if nx.has_eulerian_path(G):
-    print(list(nx.eulerian_path(G)))
-else:
-    print("None")
-
-print(is_eurelian(LG))
-if nx.has_eulerian_path(LG):
-    print(list(nx.eulerian_path(LG)))
-else:
-    print("None")
-
-
 def find_hamiltonian(graph, current_node, visited_nodes, path):
     print("path: {}".format(path))
 
@@ -89,14 +76,10 @@ def is_hamiltonian(graph):
     return find_hamiltonian(graph, path[0], visited_nodes, path)
 
 
-
-# Example usage
-# is_hamiltonian(LG)
-
-
 def test_eulerian():
     count = 0
     for i in range(10):
+        G = nx.erdos_renyi_graph()
         t = nx.has_eulerian_path(G)
         tt = is_eurelian(G)
         if (t is None and tt is None) or (t is not None and tt is not None):
@@ -106,13 +89,13 @@ def test_eulerian():
 
 def graph_to_plot(graph, name, figure_number):
     plt.subplot(1, 2, figure_number)
-    nx.draw(G, with_labels=name)
+    nx.draw(graph, with_labels=name)
     plt.title(name)
-    is_eulerian = is_eurelian(G)
+    is_eulerian = is_eurelian(graph)
     plt.figtext(0.10 + (0.4 * (figure_number - 1)), 0.90, "isEulerian={}".format(is_eurelian(graph)))
     if is_eulerian:
         plt.figtext(0 + (0.5 * (figure_number - 1)), 0.10, "Eulerien={}".format(find_eurelian(graph)))
-    if is_hamiltonian(G) is None:
+    if is_hamiltonian(graph) is None:
         is_hamilton = False
     else:
         is_hamilton = True
@@ -123,7 +106,6 @@ def graph_to_plot(graph, name, figure_number):
 
 def start():
     G = nx.erdos_renyi_graph(5, 0.5)
-
     LG = nx.line_graph(G)
     graph_to_plot(G, "G", 1)
     graph_to_plot(LG, "LG", 2)

@@ -1,6 +1,3 @@
-# import time
-# import matplotlib.pyplot as plt
-# from numpy.polynomial import Polynomial as P
 import time
 import numpy as np
 import matplotlib.pyplot as plt
@@ -13,7 +10,7 @@ def function_1(n: int) -> None:
     this function as a function of n.
 
     The inside loop of the function for j in range(i) is running n² times with a value of j going from 0, to n² - 1
-    the time complexity of the the function is therefore the sum of every numbers from 0 to n²
+    the time complexity of the function is therefore the sum of every numbers from 0 to n²
      which is the formula: S(n) = n x (n + 1) / 2
      or in this instance: S(n) = n² x ((n² - 1) + 1) / 2
      that can be simplified:
