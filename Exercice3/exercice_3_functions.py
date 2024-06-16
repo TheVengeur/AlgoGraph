@@ -69,7 +69,7 @@ def verify_bound(function, polynomial_degree: int, figure_numer: int) -> None:
     times = [sum(sub_times) / len(sub_times) for sub_times in zipped_times]
     polynomial_fit = np.polyfit(ns, times, polynomial_degree)
     polynomial_function = np.poly1d(polynomial_fit)
-    polynomial_n = np.linspace(min(ns), max(ns), 10)
+    polynomial_n = np.linspace(min(ns), max(ns), 50)
     polynomial_times = polynomial_function(polynomial_n)
 
     plt.subplot(1, 2, figure_numer)
